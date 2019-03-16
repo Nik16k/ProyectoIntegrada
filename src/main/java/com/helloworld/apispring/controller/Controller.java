@@ -31,7 +31,7 @@ public class Controller {
     
     // VALIDAR EVENTOS POR CIUDADANO    
     @Autowired
-    private Situaciones_Servicio eventosServicio;
+    private eventoServicio eventosServicio;
 
     @RequestMapping(value = "/Eventos_Ciudadano", method = RequestMethod.GET)
     public ResponseEntity<List<eventos>> obtenerSituaciones() {
