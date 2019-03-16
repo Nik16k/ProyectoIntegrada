@@ -1,15 +1,17 @@
 package com.helloworld.apispring.model.dao;
+
 import com.helloworld.apispring.model.entity.personas;
 import java.util.List;
 import org.hibernate.Criteria;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 @Repository
 @Transactional
-public class Ciudadano_Repositorio {
+public class personaRepositorio {
 
     @Autowired
     private SessionFactory sessionFactory;
@@ -22,18 +24,21 @@ public class Ciudadano_Repositorio {
         this.sessionFactory = sessionFactory;
     }
 
-  
-     
-    public List<personas> getCiudadanos() {
+    public List<personas> getPersonas() {
         Criteria criteria = getSessionFactory().getCurrentSession().createCriteria(personas.class);
         return criteria.list();
     }
-    
-    public long crearPersona(personas Ciudadano) {
-        getSessionFactory().getCurrentSession().save(Ciudadano);
-        return Ciudadano.getIdCiudadano();
+
+    public long crearPersona(personas Persona) {
+        getSessionFactory().getCurrentSession().save(Persona);
+        return Persona.getIdCiudadano();
     }
 
-  
+    public List<personas> ciudadnosPorId(int id) {
+        Criteria criteria = getSessionFactory().getCurrentSession().createCriteria(personas.class);
+        criteria.add(Restrictions.eq("Ciudadano", id));
+        return criteria.list();
+    
+    }
 
 }
