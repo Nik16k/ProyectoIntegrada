@@ -1,5 +1,6 @@
 package com.helloworld.apispring.model.entity;
 
+import com.helloworld.apispring.model.entity.personas;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

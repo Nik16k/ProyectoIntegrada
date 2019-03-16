@@ -1,5 +1,7 @@
 package com.helloworld.apispring.model.entity;
 
+import com.helloworld.apispring.model.entity.historia;
+import com.helloworld.apispring.model.entity.personas;
 import java.util.List;
 
 import javax.persistence.Column;

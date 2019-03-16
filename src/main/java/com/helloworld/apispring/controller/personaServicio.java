@@ -3,7 +3,6 @@ package com.helloworld.apispring.controller;
 import com.helloworld.apispring.model.dao.personaRepositorio;
 import com.helloworld.apispring.model.entity.personas;
 import java.util.List;
-import org.hibernate.Criteria;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,7 +15,7 @@ public class personaServicio {
     public personaServicio() {
     }
 
-    // TRAER TODOS LOS CIUDADANOS
+
     public List<personas> getCiudadanos() {
         return Ciudadano_Repositorio.getPersonas();
     }
@@ -26,8 +25,8 @@ public class personaServicio {
     }
 
    
-     List<personas> getCiudadanoPorId(int id) {
-        return (List<personas>) Ciudadano_Repositorio.ciudadnosPorId(id);
+     List<personas> getCiudadanoPorId(String apellido) {
+        return (List<personas>) Ciudadano_Repositorio.ciudadnosPorId(apellido);
     }
    
 }

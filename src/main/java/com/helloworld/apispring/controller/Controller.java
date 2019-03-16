@@ -20,14 +20,14 @@ public class Controller {
     private historiaServicio registroSituacionesServicio;
 
 // Servicio No.1 Mostrar todos los personas creados en la database
-    @RequestMapping(value = "/Ciudadanos", method = RequestMethod.GET)
+    @RequestMapping(value = "/PersonasConsul", method = RequestMethod.GET)
     public ResponseEntity<List<personas>> obtenerCiudadanos() {
         List<personas> ciudadanos = Ciudadano_Servicio.getCiudadanos();
         return new ResponseEntity<List<personas>>(ciudadanos, HttpStatus.OK);
     }
 //Servicio No. 2 Crear un ciudadano en la database
 
-    @RequestMapping(value = "/ciudadanos", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/PersonasInsert", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<String> crearPersona(@RequestBody personas Ciudadano) {
         String resultado = "Se creo persona con ID: " + Ciudadano_Servicio.crearPersona(Ciudadano);
         return new ResponseEntity<String>(resultado, HttpStatus.OK);
@@ -36,33 +36,33 @@ public class Controller {
     @Autowired
     private eventoServicio Situaciones_Servicio;
 
-//Servicio No 3 . Mostrar todas las eventos de los personas
-    @RequestMapping(value = "/eventos", method = RequestMethod.GET)
-    public ResponseEntity<List<eventos>> obtenerSituaciones() {
+
+    @RequestMapping(value = "/eventosConsul", method = RequestMethod.GET)
+    public ResponseEntity<List<eventos>> obtenerEventos() {
         List<eventos> situaciones = Situaciones_Servicio.getSituaciones();
         return new ResponseEntity<List<eventos>>(situaciones, HttpStatus.OK);
     }
-    //Servicio No. 4 buscar ciudadano por id
 
-    @RequestMapping(value = "/personas", method = RequestMethod.GET)
-    public ResponseEntity<List<personas>> ciudadanoPorId(@RequestParam(value = "IdCiudadano") int id) {
-        List<personas> ciudadnosId = (List<personas>) Ciudadano_Servicio.getCiudadanoPorId(id);
+
+    @RequestMapping(value = "/personasBuscar", method = RequestMethod.GET)
+    public ResponseEntity<List<personas>> PersonaID(@RequestParam(value = "ApellidosCiudadano") String apellido) {
+        List<personas> ciudadnosId = (List<personas>) Ciudadano_Servicio.getCiudadanoPorId(apellido);
         return new ResponseEntity<List<personas>>(ciudadnosId, HttpStatus.OK);
     }
-//Servicio No 5 registrar un evento por personas
-    @RequestMapping(value = "/eventos", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<String> crearEventoCiudadano(@RequestBody historia registroEvento) {
+
+    @RequestMapping(value = "/EventosInsert", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<String> crearEventoPersona(@RequestBody historia registroEvento) {
         String resultado = "Se creo el evento : " + registroSituacionesServicio.registroEvento(registroEvento);
-        return new ResponseEntity<String>(resultado, HttpStatus.OK);
+        return new ResponseEntity<>(resultado, HttpStatus.OK);
     }
     
-    //Servicio No. 6 Listar Eventos por ciudadano
+
     
     @RequestMapping(value = "/eventos_persona", method = RequestMethod.GET)
     public ResponseEntity<List<historia>> eventosCiudadanoPorId(@RequestParam(value = "IdCiudadano") int id) {
         List<historia> eventosCiudadanosId = (List<historia>) registroSituacionesServicio.getEventosId(id); 
                 
-        return new ResponseEntity<List<historia>>(eventosCiudadanosId, HttpStatus.OK);
+        return new ResponseEntity<>(eventosCiudadanosId, HttpStatus.OK);
     }
     
     
