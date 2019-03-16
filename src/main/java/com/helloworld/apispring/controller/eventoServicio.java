@@ -8,12 +8,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class Situaciones_Servicio {
+public class eventoServicio {
     
          @Autowired
     private eventoRepositorio Situaciones_Repositorio;
 
-    public Situaciones_Servicio() {
+    public eventoServicio() {
     }
 
     public List<eventos> getSituaciones() {
