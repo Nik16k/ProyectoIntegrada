@@ -1,6 +1,6 @@
 package com.helloworld.apispring.controller;
 
-import com.helloworld.apispring.model.dao.Situaciones_Repositorio;
+import com.helloworld.apispring.model.dao.eventoRepositorio;
 import com.helloworld.apispring.model.entity.historia;
 import com.helloworld.apispring.model.entity.eventos;
 import java.util.List;
@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 public class Situaciones_Servicio {
     
          @Autowired
-    private Situaciones_Repositorio Situaciones_Repositorio;
+    private eventoRepositorio Situaciones_Repositorio;
 
     public Situaciones_Servicio() {
     }
